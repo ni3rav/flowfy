@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 export const getTasks: RequestHandler = async (req, res, next) => {
     try {
         const tasks = await TaskModel.find().exec();
+        console.log(tasks)
         res.status(200).json(tasks)
     } catch (error) {
         next(error)
