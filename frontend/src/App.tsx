@@ -7,8 +7,7 @@ function App() {
   useEffect(() => {
     const loadTasks = async () => {
       try {
-        const domain = import.meta.env.DEV ? "localhost:1812": ""
-        const response = await fetch(domain + "/api/tasks", {
+        const response = await fetch("/api/tasks", {
           method: "GET",
         });
 
