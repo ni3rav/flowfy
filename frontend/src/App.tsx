@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Task } from "./lib/models";
+import { TaskCard } from "./components/TaskCard";
+import { NavigationBar } from "./components/Navbar";
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -29,12 +31,12 @@ function App() {
 
   return (
     <div>
-      {tasks.map((task, index) => (
-        <div key={index}>
-          <h1>{task.title}</h1>
-          <p>{task.text}</p>
-        </div>
-      ))}
+      <NavigationBar />
+      <div className="h-screen w-screen bg-gray-100 p-4 relative overflow-hidden">
+        {tasks.map((task, index) => (
+          <TaskCard key={index} task={task} />
+        ))}
+      </div>
     </div>
   );
 }
