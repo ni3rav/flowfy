@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Task } from "./lib/models";
 import { TaskCard } from "./components/TaskCard";
 import { NavigationBar } from "./components/Navbar";
+import { CreateTask } from "./components/CreateTask";
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
@@ -22,7 +23,6 @@ function App() {
         setTasks(tasks);
       } catch (error) {
         console.error("Failed to fetch tasks:", error);
-        alert(String(error));
       }
     };
 
@@ -30,13 +30,14 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="h-[400vh]">
       <NavigationBar />
       <div className="h-screen w-screen bg-gray-100 p-4 relative overflow-hidden">
         {tasks.map((task, index) => (
           <TaskCard key={index} task={task} />
         ))}
       </div>
+      <CreateTask />
     </div>
   );
 }
